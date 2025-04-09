@@ -14,12 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: SSH into EC2 and restart app
-        uses: appleboy/ssh-action@v1.0.0
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v0.2.0
         with:
           host: ubuntu@13.60.47.33
           username: ubuntu
           key: ${{ secrets.PRIVATE_SSH_KEY }}
+          port: 22
           script: |
             cd /home/ubuntu/my-app
             npm install
