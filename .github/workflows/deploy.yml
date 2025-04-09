@@ -12,17 +12,18 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v0.2.0
+        uses: appleboy/ssh-action@v1
         with:
           host: ubuntu@13.60.47.33
           username: ubuntu
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
-          script: |
-            cd /home/ubuntu/my-app
-            npm install
-            npm run build
-            npm run start
+          script: whoami
+          # script: |
+          #   cd /home/ubuntu/my-app
+          #   npm install
+          #   npm run build
+          #   npm run start
